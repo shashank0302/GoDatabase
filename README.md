@@ -1,1 +1,3 @@
 # GoDatabase
+
+This Project implements a Custom database implemented using Go from scratch. More updates Coming Soon...
