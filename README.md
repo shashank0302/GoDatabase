@@ -8,7 +8,7 @@ This project implements a custom, ACID-compliant database in Go with a focus on 
 ## Project Overview
 
 ### Core Components
-
+-Original B+Tree Is implemented referenced from [ build-your-own-db-from-scratch](https://build-your-own.org/database/)
 1. **Original B+Tree Implementation** (`internal/btree/`)
    - Custom-designed node structure with fixed 4KB pages
    - Original implementation of internal and leaf nodes
