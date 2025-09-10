@@ -26,7 +26,6 @@ func main() {
 	
 	/*
 	// ===== TO TEST BOTH STORAGE ENGINES =====
-	// Once the custom storage engine is fixed, you can test both implementations:
 	
 	// Test Custom B+Tree Storage
 	fmt.Println("Testing Custom B+Tree Storage:")
