@@ -1,42 +1,53 @@
-# GeoCacheGoDB - Distributed Key-Value Store
+# GeoCacheGoDB - Custom Storage Engine
 
-A distributed, ACID-compliant key-value store in Go, designed to learn and implement distributed systems concepts with geo-distributed caching capabilities.
+This project implements a custom, ACID-compliant database in Go with a focus on educational purposes and understanding database internals. The storage layer provides two implementations:
 
-## Project Status
+1. **Custom B+Tree Storage**: A completely original implementation of a B+Tree with file persistence
+2. **BadgerDB Storage**: A wrapper around BadgerDB for comparison and testing
 
-### ✅ Single-Node Implementation (COMPLETE)
-- **B+Tree Storage**: Custom implementation with 4KB pages
-- **Storage Interface**: Clean API for key-value operations
-- **BadgerDB Integration**: Production-ready storage alternative
-- **Concurrency**: Mutex-based thread safety
-- **Unit Tests**: 90% coverage
+## Project Overview
 
-### ✅ Distributed System Implementation (COMPLETE)
-- **Raft Consensus**: Full Raft algorithm implementation
-- **Leader Election**: Automatic leader election with timeouts
-- **Log Replication**: Strong consistency through replicated logs
-- **Split-brain Protection**: Only one leader at a time
-- **Fault Tolerance**: Cluster continues with majority of nodes
-- **gRPC Communication**: High-performance RPC layer
-- **Client Libraries**: Both gRPC and TCP clients
+### Core Components
 
-## 🚀 Distributed System Implementation Plan
+1. **Original B+Tree Implementation** (`internal/btree/`)
+   - Custom-designed node structure with fixed 4KB pages
+   - Original implementation of internal and leaf nodes
+   - Custom variable-length key-value storage encoding
+   - Novel parent-child relationship tracking system
+   - Original node splitting and merging algorithms
+   - Custom serialization/deserialization format
 
-### Phase 1: Basic Distributed System (Start Here!)
-1. **Simple TCP Network Layer**
-   ```go
-   // internal/network/
-   ├── server.go      // TCP server
-   ├── client.go      // TCP client
-   └── protocol.go    // Message format
-   ```
+2. **Custom Storage Engine** (`internal/storage/`)
+   - Original storage interface design
+   - Custom file format with magic numbers and versioning
+   - Original file I/O operations
+   - Custom synchronization with mutex locks
+   - Basic persistence implementation
 
-2. **Basic Replication**
-   - Primary-backup replication
-   - Simple leader election
-   - Basic failover
+### Current Features
 
-3. **Client Library**
+1. **B+Tree Core** (Original Implementation)
+   - ✅ Custom node structure with fixed 4K page size
+   - ✅ Original CRUD operations (Insert, Get, Delete)
+   - ✅ Custom node splitting and merging algorithms
+   - ✅ Novel parent-child relationship tracking
+   - ✅ Original serialization/deserialization
+   - ✅ Comprehensive unit tests
+
+2. **Storage Layer** (Original Implementation)
+   - ✅ Custom storage interface design
+   - ✅ Original file format with versioning
+   - ✅ Custom file I/O operations
+   - ✅ Original error handling system
+   - ✅ Custom size tracking
+
+## Implementation Details
+
+### B+Tree Implementation
+
+The B+Tree implementation (`internal/btree/`) is a completely original work:
+
+1. **Node Structure** (`node.go`)
    ```go
    // pkg/client/
    └── client.go      // Client SDK
